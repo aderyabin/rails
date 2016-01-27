@@ -43,12 +43,12 @@ module ActiveRecord
         end
       end
 
-      def normalize_migration_number(number)
+      def normalize_migration_number(number = nil)
         "%.3d" % number.to_i
       end
 
       def normalized_versions
-        pluck(:version).map { |v| normalize_migration_number v }
+        pluck(:version).map { |v| normalize_migration_number(v) }
       end
     end
 
