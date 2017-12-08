@@ -1,3 +1,19 @@
+*   Add options support for `ActiveRecord::Relation.explain`
+    This adds support for MySQL and PostgreSQL specific EXPLAIN flags.
+
+     Examples:
+
+        # PostgreSQL
+        User.where(temper: "evil").explain(format: :xml)
+        User.where(temper: "evil").explain(verbose: :true, format: :json)
+        User.where(temper: "evil").explain(analyze: true, timing: false)
+        
+        
+        # MySQL
+        Spaceship.where(planet: "Mars").explain(extended: true, format: :json)
+
+    *Andrey Deryabin*
+
 *   Add support for PostgreSQL operator classes to `add_index`.
 
     Example:
